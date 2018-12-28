@@ -51,8 +51,8 @@ module.exports = {
           ui.writeLine(data, 'ERROR');
         }
       };
-      const templatercPath = this._options.templatercPath
-        ? this.project.root + this._options.templatercPath
+      const configPath = this._options.configPath
+        ? this.project.root + this._options.configPath
         : this.project.root + '/.template-lintrc';
 
       return TemplateLinter.create(tree, {
@@ -61,7 +61,7 @@ module.exports = {
         groupName: (this._options.group !== false) ? type : undefined,
         console: mockConsole,
         project: this.project,
-        templatercPath
+        configPath
       });
     }
   },
