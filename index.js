@@ -51,14 +51,17 @@ module.exports = {
           ui.writeLine(data, 'ERROR');
         }
       };
+      const templatercPath = this._options.templatercPath
+        ? this.project.root + this._options.templatercPath
+        : this.project.root + '/.template-lintrc';
 
       return TemplateLinter.create(tree, {
         annotation: 'TemplateLinter',
-        templatercPath: this.project.root + '/.template-lintrc',
         testGenerator: this._options.testGenerator,
         groupName: (this._options.group !== false) ? type : undefined,
         console: mockConsole,
-        project: this.project
+        project: this.project,
+        templatercPath
       });
     }
   },
